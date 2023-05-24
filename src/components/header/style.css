@@ -1,0 +1,28 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(90deg, #56ab2f, #a8e063);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}
+
+.main-header h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

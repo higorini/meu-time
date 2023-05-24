@@ -1,0 +1,39 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(90deg, #56ab2f, #a8e063);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}
+
+.footer p {
+  color: #ffffff;
+  text-align: center;
+}
+
+.creator-link {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+.creator-link:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
