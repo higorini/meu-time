@@ -1,9 +1,11 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import { useLocalStorage } from "react-use";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [value, setValue] = useLocalStorage("key", "");
+  const navigate = useNavigate();
   const [key, setKey] = useState("");
   const [data, setData] = useState([]);
   const [error, setError] = useState({
@@ -47,6 +49,7 @@ function Login() {
         message: "",
       });
       setValue(key);
+      return navigate("/dashboard");
     } else {
       setError({
         error: true,
