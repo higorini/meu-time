@@ -18,6 +18,8 @@ function Dashboard() {
   const [seasons, setSeasons] = useState([]);
   const [teams, setTeams] = useState([]);
   const [players, setPlayers] = useState([]);
+  const [statistics, setStatistics] = useState([]);
+  const [fixture, setFixture] = useState([]);
 
   useEffect(() => {
     if (value.length == 0) {
@@ -55,7 +57,6 @@ function Dashboard() {
     result.data.response = result.data.response.map((item) => {
       return { name: item.league.name, id: item.league.id };
     });
-    console.log(result.data.response);
     setLeague(result.data.response);
   }
 
@@ -78,7 +79,6 @@ function Dashboard() {
     const result = await api.get(
       `/players?team=${form.teams}&season=${form.seasons}`
     );
-    console.log(result.data.response);
     result.data.response = result.data.response.map((item) => {
       return {
         name: item.player.name,
@@ -86,8 +86,32 @@ function Dashboard() {
         nationality: item.player.nationality,
       };
     });
-    console.log(result.data.response);
     setPlayers(result.data.response);
+  }
+
+  async function getStatistics() {
+    const result = await api.get(
+      `/teams/statistics?league=${form.league}&season=${form.seasons}&team=${form.teams}`
+    );
+
+    setFixture({
+      played: result.data.response.fixtures.played.total,
+      wins: result.data.response.fixtures.wins.total,
+      loses: result.data.response.fixtures.loses.total,
+      draws: result.data.response.fixtures.draws.total,
+    });
+
+    result.data.response = result.data.response.lineups.reduce(
+      (value, item) => {
+        if (item.played > value.played) {
+          return { formation: item.formation, played: item.played };
+        }
+        return value;
+      },
+      { formation: "", played: 0 }
+    );
+
+    setStatistics(result.data.response);
   }
 
   useEffect(() => {
@@ -115,6 +139,12 @@ function Dashboard() {
   useEffect(() => {
     if (form.teams) {
       getPlayers();
+    }
+  }, [form.teams]);
+
+  useEffect(() => {
+    if (form.teams) {
+      getStatistics();
     }
   }, [form.teams]);
 
@@ -205,20 +235,57 @@ function Dashboard() {
       </div>
 
       {form.teams && (
-        <div className="dashboard-players">
-          <div className="dashboard-header">
-            <p>Nome</p>
-            <p>Idade</p>
-            <p>Nacionalidade</p>
+        <div>
+          <div className="dashboard-players">
+            <div className="dashboard-header">
+              <p>Nome</p>
+              <p>Idade</p>
+              <p>Nacionalidade</p>
+            </div>
+            <div className="dashboard-content">
+              {players.map((item) => (
+                <div key="" className="dashboard-player">
+                  <p>{item.name}</p>
+                  <p>{item.age}</p>
+                  <p>{item.nationality}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="dashboard-content">
-            {players.map((item) => (
-              <div key="" className="dashboard-player">
-                <p>{item.name}</p>
-                <p>{item.age}</p>
-                <p>{item.nationality}</p>
-              </div>
-            ))}
+
+          <div className="dashboard-lineup">
+            <div className="dashboard-number">
+              <h2>Formação mais usada: </h2>
+              <h3>
+                {statistics.formation
+                  ? statistics.formation
+                  : "Não houve formações nesse ano"}
+              </h3>
+            </div>
+
+            <div className="dashboard-played">
+              <h2>Número de jogos:</h2>
+              <h3>
+                {statistics.played
+                  ? statistics.played
+                  : "Não houve jogos nesse ano"}
+              </h3>
+            </div>
+          </div>
+
+          <div className="dashboard-results">
+            <div className="dashboard-header">
+              <p>Jogos</p>
+              <p>Vitórias</p>
+              <p>Derrotas</p>
+              <p>Empates</p>
+            </div>
+            <div key="" className="dashboard-win">
+              <p>{fixture.played}</p>
+              <p>{fixture.wins}</p>
+              <p>{fixture.loses}</p>
+              <p>{fixture.draws}</p>
+            </div>
           </div>
         </div>
       )}
