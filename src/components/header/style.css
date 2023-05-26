@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -25,4 +27,6 @@
   font-size: 2rem;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
 }

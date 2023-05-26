@@ -76,7 +76,12 @@ function Login() {
         </button>
         <p>
           Não tem uma key?{" "}
-          <a href="#" className="get-key-link">
+          <a
+            href="https://dashboard.api-football.com/register"
+            className="get-key-link"
+            rel="noreferrer"
+            target="_blank"
+          >
             Consiga uma aqui!
           </a>
         </p>

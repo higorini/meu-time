@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 .main-login {
   display: flex;
   justify-content: center;
@@ -7,10 +9,15 @@
   margin: auto;
   background-color: #ffffff;
   width: 50%;
+  font-family: "Montserrat", sans-serif;
 }
 
 .login-container {
   width: 50%;
+}
+
+.login-container h2 {
+  text-transform: uppercase;
 }
 
 .login-key {
@@ -24,6 +31,7 @@
 
 .login-button {
   width: 100%;
+  margin: 0.5rem 0;
   padding: 1rem;
   border: none;
   border-radius: 0.5rem;

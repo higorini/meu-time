@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -17,9 +19,9 @@
   padding: 1rem;
   background: linear-gradient(90deg, #56ab2f, #a8e063);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
   background-size: 200% 200%;
   animation: gradient 5s ease infinite;
+  font-family: "Roboto", sans-serif;
 }
 
 .footer p {
