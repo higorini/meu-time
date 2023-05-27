@@ -101,6 +101,8 @@ function Dashboard() {
       draws: result.data.response.fixtures.draws.total,
     });
 
+    console.log(result.data.response.goals.for.minute[0].total);
+
     result.data.response = result.data.response.lineups.reduce(
       (value, item) => {
         if (item.played > value.played) {

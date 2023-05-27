@@ -34,7 +34,9 @@
   color: #225599;
 }
 
-.dashboard-players {
+.dashboard-players,
+.dashboard-lineup,
+.dashboard-results {
   width: 100%;
   margin-bottom: 2rem;
   border: 1px solid #ddd;
@@ -44,7 +46,8 @@
 }
 
 .dashboard-header,
-.dashboard-player {
+.dashboard-player,
+.dashboard-win {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
@@ -52,7 +55,8 @@
 }
 
 .dashboard-header p,
-.dashboard-player p {
+.dashboard-player p,
+.dashboard-win p {
   flex: 0 0 33.33%;
   text-align: center;
 }
@@ -68,6 +72,17 @@
   text-align: center;
 }
 
+.dashboard-number h2,
+.dashboard-played h2 {
+  font-size: 1.1rem;
+  color: #225599;
+}
+
+.dashboard-number h3,
+.dashboard-played h3 {
+  font-size: 0.9rem;
+}
+
 /* Media queries for larger screens */
 @media screen and (min-width: 768px) {
   .dashboard-select form {
@@ -75,7 +90,9 @@
     margin-bottom: 0;
   }
 
-  .dashboard-players {
+  .dashboard-players,
+  .dashboard-lineup,
+  .dashboard-results {
     width: 30%;
     margin: 0 auto;
   }
